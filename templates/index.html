@@ -4,38 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose Luis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background-color:#2563eb;
+            height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .contenedor{
+            background:white;
+            width:500px;
+            padding:40px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .emoji{
+            font-size:70px;
+            margin-bottom:15px;
+        }
+
+        h1{
+            color:#2563eb;
+            margin-bottom:15px;
+        }
+
+        p{
+            color:#555;
+            margin-bottom:25px;
+        }
+
+        .boton{
+            display:inline-block;
+            text-decoration:none;
+            background:#2563eb;
+            color:white;
+            padding:12px 25px;
+            border-radius:10px;
+        }
+
+        .boton:hover{
+            background:#1d4ed8;
+        }
+    </style>
+
 </head>
 <body>
 
-    <div class="card">
+    <div class="contenedor">
 
         <div class="emoji">🚀</div>
 
         <h1>Jose Luis</h1>
 
         <p>
-            Bienvenido a mi página web desarrollada con Python y Flask.
+            Bienvenido a mi página web creada con Flask.
         </p>
 
-        <div class="cajas">
-            <div class="caja">
-                <span>🌐</span>
-                <h3>Redes</h3>
-            </div>
-
-            <div class="caja">
-                <span>💻</span>
-                <h3>Programación</h3>
-            </div>
-
-            <div class="caja">
-                <span>📡</span>
-                <h3>Telecom</h3>
-            </div>
-        </div>
-
-        <button>Ver Perfil</button>
+        <a href="#" class="boton">Ingresar</a>
 
     </div>
 
