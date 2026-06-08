@@ -1,0 +1,42 @@
+name: Cosntruccion de imagen y depliegue con Docker en EC2
+on:
+  push: 
+     branches: [ "main" ]
+  pull_request: 
+     branches: [ "main" ]
+
+jobs:
+  build:
+    name: Construir imagen de Docker y subir al repositorio
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push to Docker Hub
+        uses: docker/build-push-action@4
+        with:
+          context: .
+          push: true
+          tags: joseluis37/isa-abr26-cicd-docker:flaskapp
+
+      - name: Deployment
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            docker image pull joseluis37/isa-abr26-cicd-docker:flaskapp
+            docker container stop contflaskjose
+            docker container rm contflaskjose
+            docker container run -d --name contflaskjose -p 80:5000 joseluis37/isa-abr26-cicd-docker:flaskapp
+        
