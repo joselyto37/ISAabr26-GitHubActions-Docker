@@ -8,15 +8,24 @@
 </head>
 <body>
 
-    <div class="contenedor">
+    <div class="overlay">
         <div class="card">
+
+            <img src="{{ url_for('static', filename='img/perfil.png') }}"
+                 alt="Jose Luis"
+                 class="perfil">
+
             <h1>Jose Luis</h1>
 
             <p>
-                Bienvenido a mi página web desarrollada con Python y Flask.
+                 Redes GPON | MPLS | Desarrollo Web
             </p>
 
-            <a href="#" class="boton">Conocer más</a>
+            <div class="botones">
+                <a href="#" class="btn">Proyectos</a>
+                <a href="#" class="btn">Contacto</a>
+            </div>
+
         </div>
     </div>
 
